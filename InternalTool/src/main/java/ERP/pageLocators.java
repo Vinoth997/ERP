@@ -1,14 +1,20 @@
 package ERP;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 public class pageLocators {
 
-	public final String USERNAME_FIELD = "//input[@id='login_email']"; 
-  
-	public final String PASSWORD_FIELD = "//input[@id='login_password']";
+	@FindBy(xpath = "//input[@id='login_email']")
+	public WebElement USERNAME_FIELD;
 	
-	public final String LOGIN_BUTTON = "//button[contains(text(),'Login')]";
+	@FindBy(xpath = "//input[@id='login_password']")
+	public WebElement PASSWORD_FIELD;
 	
-	public final String HR_TAB = "//div[@class='standard-sidebar-section']//span[text()='HR']";
-
+	@FindBy(xpath = "//button[contains(text(),'Login')]")
+	public WebElement LOGIN_BUTTON;
+	
+	@FindBy(xpath = "//div[@class='standard-sidebar-section']//span[text()='HR']")
+	public WebElement HR_TAB;
 	
 }
