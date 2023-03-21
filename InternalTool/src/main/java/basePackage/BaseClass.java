@@ -13,12 +13,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.bidi.log.LogEntry;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.logging.LogEntries;
-import org.openqa.selenium.logging.LogType;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
@@ -40,12 +37,11 @@ public class BaseClass {
 		options.addArguments("disable-dev-shm-usage");
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(options);
-	    Reporter.log("Website is launching");
-	    driver.get("https://appointry.com/login#login");	 
-	    Reporter.log("User name is entered");
+		Reporter.log("Website is launching");
+		driver.get("https://appointry.com/login#login");
+		Reporter.log("User name is entered");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-	        }
-	
+	}
 
 	public static void browserClose() throws IOException {
 		driver.close();
@@ -67,6 +63,7 @@ public class BaseClass {
 		File destFile = new File("C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + ".png");
 		FileUtils.copyFile(srcFile, destFile);
 	}
+
 	public static void takesScreenShotfull() throws IOException {
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
@@ -77,7 +74,6 @@ public class BaseClass {
 		File destFile = new File("C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + ".png");
 		FileUtils.copyFile(srcFile, destFile);
 	}
-
 
 	public static void failedMethodTakesscreenshot(ITestResult result) throws Exception {
 
@@ -90,17 +86,22 @@ public class BaseClass {
 
 		if (result.FAILURE == result.getStatus()) {
 
-			File destFile = new File("C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + "-" + result.getName() + ".png");
+			String destination = System.getProperty("user.dir") + "/FailureScreenShots/" + TimeStamp + "-"
+					+ result.getName() + ".png";
+			File destFile = new File(destination);
 			FileUtils.copyFile(srcFile, destFile);
+
 		}
 
 		else if (result.SKIP == result.getStatus()) {
-			File destFile = new File(
-					"C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + " " + result.getName() + ".png");
+			String destination = System.getProperty("user.dir") + "/FailureScreenShots/" + TimeStamp + "-"
+					+ result.getName() + ".png";
+			File destFile = new File(destination);
 			FileUtils.copyFile(srcFile, destFile);
 		} else if (result.SUCCESS == result.getStatus()) {
-			File destFile = new File(
-					"C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + " " + result.getName() + ".png");
+			String destination = System.getProperty("user.dir") + "/FailureScreenShots/" + TimeStamp + "-"
+					+ result.getName() + ".png";
+			File destFile = new File(destination);
 			FileUtils.copyFile(srcFile, destFile);
 		}
 
