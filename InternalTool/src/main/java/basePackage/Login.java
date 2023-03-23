@@ -1,24 +1,27 @@
 package basePackage;
 import java.io.IOException;
-import ERP.pageLocators;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 
+import ERP.pageLocators;
+
 	public class Login extends BaseClass {
+		
+		pageLocators locators;
 
-		public Login() {
+		public Login(WebDriver driver) {
 
-			PageFactory.initElements(driver, this);
+			locators = PageFactory.initElements(driver, pageLocators.class);
 		}
 		
+		
+		
 		public void loginUser() throws IOException {
-			pageLocators Locators = new pageLocators();
 			try {
-				driver.findElement(By.xpath(Locators.USERNAME_FIELD)).sendKeys("administrator");
-		        driver.findElement(By.xpath(Locators.PASSWORD_FIELD)).sendKeys("ss-erp@2021");
-		        driver.findElement(By.xpath(Locators.LOGIN_BUTTON)).click();
+				locators.USERNAME_FIELD.sendKeys("administrator");
+		        locators.PASSWORD_FIELD.sendKeys("ss-erp@2021");
+		        locators.LOGIN_BUTTON.click();
 				
 			} catch (Exception e) {
 				takesScreenShotfull();
