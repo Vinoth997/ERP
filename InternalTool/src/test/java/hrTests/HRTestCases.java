@@ -78,6 +78,12 @@ public class HRTestCases extends BaseClass {
 		Methods.verifyTotalLeaveAllocation(user.After_Buffer_Date);
 		System.out.println("Successfully created the senior employee details with a joining date before the 25th");
 	}
+	
+	@Test
+	private void newTest() {
+		// TODO Auto-generated method stub
+
+	}
 
 	@AfterMethod
 	private void take_Failures_Screenshot(ITestResult result) throws Exception {
