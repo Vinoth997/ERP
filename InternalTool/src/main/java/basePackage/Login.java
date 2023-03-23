@@ -8,7 +8,7 @@ import ERP.pageLocators;
 
 	public class Login extends BaseClass {
 		
-		pageLocators locators;
+		private pageLocators locators;
 
 		public Login(WebDriver driver) {
 
