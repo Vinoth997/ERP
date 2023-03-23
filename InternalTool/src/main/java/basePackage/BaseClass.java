@@ -41,12 +41,11 @@ public class BaseClass {
 		options.addArguments("disable-dev-shm-usage");
 		WebDriverManager.chromedriver().setup();
 		driver = new ChromeDriver(options);
-	    Reporter.log("Website is launching");
-	    driver.get("https://appointry.com/login#login");	 
-	    Reporter.log("User name is entered");
+		Reporter.log("Website is launching");
+		driver.get("https://appointry.com/login#login");
+		Reporter.log("User name is entered");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-	        }
-	
+	}
 
 	public static void browserClose() throws IOException {
 		driver.close();
@@ -78,6 +77,7 @@ public class BaseClass {
 		File destFile = new File("C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + ".png");
 		FileUtils.copyFile(srcFile, destFile);
 	}
+
 	public static void takesScreenShotfull() throws IOException {
 
 		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
@@ -88,7 +88,6 @@ public class BaseClass {
 		File destFile = new File("C:\\Users\\softsuave\\Documents\\ERP\\Logs\\ScreenShots\\" + TimeStamp + ".png");
 		FileUtils.copyFile(srcFile, destFile);
 	}
-
 
 	public static void FailedMethodTakesscreenshot(ITestResult result) throws Exception {
 

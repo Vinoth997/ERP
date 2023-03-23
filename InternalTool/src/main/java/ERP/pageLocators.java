@@ -5,6 +5,9 @@ import java.util.List;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+
 public class pageLocators {
 	
 	@FindBy(xpath = "//input[@id='login_email']")
