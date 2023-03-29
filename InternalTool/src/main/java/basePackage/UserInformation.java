@@ -45,8 +45,12 @@ public class UserInformation {
     public final String Employee_Fresher = "No";
     
     public final String Employee_Experienced = "Yes";
+    
+    public final String Leave_Employee_Name = "SS00386";
+    
+    public final String Employee_LEAVE_FROM_DATE = "27-03-2023";
 	
-	
+    public final String Employee_LEAVE_TO_DATE = "27-03-2023";
 	}
 	
 

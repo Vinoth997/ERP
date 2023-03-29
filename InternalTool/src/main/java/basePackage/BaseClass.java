@@ -207,4 +207,9 @@ public class BaseClass {
 		return employeeIDText;
 	}
 	
+	public String  gettext(WebElement element ) {
+	String text=element.getText();	
+	return text;
+	}
+	
 }
