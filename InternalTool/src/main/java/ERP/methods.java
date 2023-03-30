@@ -9,7 +9,9 @@ import basePackage.UserInformation;
 
 public class methods extends BaseClass{
 	
-	 pageLocators locators;
+	
+
+	pageLocators locators;
 	 
 	 UserInformation user = new UserInformation();
 	 
@@ -91,6 +93,81 @@ public class methods extends BaseClass{
 		mouseoveractions(locators.TOTAL_ALLOCATED_LEAVE);
 		VerifyTestResult(locators.TOTAL_ALLOCATED_LEAVE, Total_Allocated_Leaves);
 		System.out.println("Verified the Total Leave allocation for an employee.");
+	}
+	
+	public void HR()
+	{
+		locators.HR_Module.click();
+	}
+	
+	public void AttendenceRequest() throws InterruptedException
+	{
+		waitForElement(locators.AR_ATTENDENCE_REQUEST);
+		locators.AR_ATTENDENCE_REQUEST.click();
+		locators.AR_ADD_ATTENDENCE_REQUEST.click();
+		waitForElement(locators.AR_SELECT_USER);
+		locators.AR_SELECT_USER.sendKeys(user.AR_emp_name);
+		locators.AR_SELECT_USER_NAME.click();
+		locators.AR_SELECT_FROMDATE.click();
+		locators.AR_PICK_FROM_DATE.click();
+		locators.AR_SELECT_TO_DATE.click();
+		locators.AR_PICK_TO_DATE.click();
+		selectByVisibletext(locators.AR_DATA_SELECT,user.AR_Reason);
+		locators.AR_DATA_FIELD_NAME.sendKeys(user.AR_Explanation);
+		locators.AR_DATA_FIELD_TYPE.click();
+		locators.AR_FILE_UPLOAD.sendKeys(user.AR_Attach);
+		Thread.sleep(3000);
+		locators.AR_STANDARD_ACTIONS.click();
+		locators.AR_STANDARD_ACTIONS_FELX.click();
+		locators.AR_CLOSE_POPUP.click();
+		locators.AR_CLICK_LOGO.click();
+	}
+	
+	public void HR1()
+	{
+		locators.HR_Module1.click();
+	}
+	
+	public void addAttendence(String status)
+	{
+		locators.CREATT_CLICKON_ATT.click();
+		locators.CREATT_CLICKON_ADD_ATT.click();
+		locators.CREATT_PICKT_DATE.click();
+		locators.CREATT_SELECT_USER.sendKeys(user.CREATT_emp_name);
+		locators.CREATT_SELECT_USER_NAME.click();
+		selectByVisibletext(locators.CREATT_DATA_SELECT,status);
+		locators.CREATT_SHIFT.sendKeys(user.CREATT_Shift);
+		locators.CREATT_SHIFT2.click();
+		locators.CREATT_LATEENTRY.click();
+		locators.CREATT_SAVE.click();
+		
+	}
+	
+	public void HR2()
+	{
+		locators.LESS_HR_Module2.click();
+	}
+	
+	public void lessHourAttendenceRequest() throws InterruptedException
+	{
+		locators.LESS_ATT_REQ.click();
+		locators.LESS_ADD_ATT_REQ.click();
+		locators.LESS_SELECT_EMP1.sendKeys(user.LESS_emp_name);
+		locators.LESS_SELECT_EMP2.click();
+		locators.LESS_DATE.click();
+		locators.LESS_DATE_SELECT.click();
+		locators.LESS_REASON.click();
+		selectByVisibletext(locators.LESS_REASON,user.LESS_REASON);
+		selectByVisibletext(locators.LESS_STATUS,user.LESS_STATUS);
+		locators.LESS_EXPLANATION.sendKeys(user.LESS_EXPLANATION);
+		locators.LESS_DATA_FIELD_TYPE.click();
+		locators.LESS_FILE_UPLOAD.sendKeys(user.LESS_Attach);
+		Thread.sleep(3000);
+		locators.LESS_STANDARD_ACTIONS.click();
+		locators.LESS_STANDARD_ACTIONS_FELX.click();
+		
+		
+		
 	}
 	
 	

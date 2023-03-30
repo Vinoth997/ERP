@@ -45,6 +45,42 @@ public class UserInformation {
     public final String Employee_Fresher = "No";
     
     public final String Employee_Experienced = "Yes";
+    
+    public final String AR_emp_name="Maganti Venkata Sreedhar";
+    
+    public final String AR_Reason="On Duty";
+    
+    public final String AR_Explanation="Due to health Issue";
+    
+    public final String AR_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
+    
+    public final String CREATT_emp_name="Maganti Venkata Sreedhar";
+    
+    public final String CREATT_Status="Less Hour";
+    
+    public final String CREATT_Shift="9 AM Shift";
+    
+    public final String LESS_emp_name="Maganti Venkata Sreedhar";
+    
+    public final String LESS_REASON="On Duty";
+    
+    public final String LESS_STATUS="Present";
+    
+    public final String LESS_EXPLANATION="Erp Issue";
+    
+    public final String LESS_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 	
 	
 	}

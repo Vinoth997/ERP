@@ -89,4 +89,146 @@ public class pageLocators {
 	@FindBy(xpath = "(//tr/td[@class='text-right'])[1]")
 	public WebElement TOTAL_ALLOCATED_LEAVE;
 	
+	@FindBy(xpath="//span[text()='HR']")
+	public WebElement HR_Module;
+	
+	@FindBy(xpath="//span[text()='Attendance Request']")
+	public WebElement AR_ATTENDENCE_REQUEST;
+	
+	@FindBy(xpath="//span[text()='dd Attendance Request ']/ancestor::button")
+	public WebElement AR_ADD_ATTENDENCE_REQUEST;
+	
+	@FindBy(xpath="//input[@data-fieldname='employee']")
+	public WebElement AR_SELECT_USER;
+	
+	@FindBy(xpath="//span[text()='Maganti Venkata Sreedhar']/ancestor::li")
+	public WebElement AR_SELECT_USER_NAME;
+	
+	
+	@FindBy(xpath="//input[@data-fieldname='from_date']")
+	public WebElement AR_SELECT_FROMDATE;
+	
+	@FindBy(xpath="//div[text()='8']")
+	public WebElement AR_PICK_FROM_DATE;
+	
+	@FindBy(xpath="//input[@data-fieldname='to_date']")
+	public WebElement AR_SELECT_TO_DATE;
+	
+	@FindBy(xpath="(//div[text()='8'])[2]")
+	public WebElement AR_PICK_TO_DATE;
+	
+	@FindBy(xpath="//select[@data-fieldtype='Select']")
+	public WebElement AR_DATA_SELECT;
+	
+	
+	
+	@FindBy(xpath="//textarea[@data-fieldname='explanation']")
+	public WebElement AR_DATA_FIELD_NAME;
+	
+	@FindBy(xpath="//button[@data-fieldtype='Attach']")
+	public WebElement AR_DATA_FIELD_TYPE;
+	
+	@FindBy(xpath="//button[@class='btn btn-file-upload']/../input[@type='file']")
+	public WebElement AR_FILE_UPLOAD;
+	
+	@FindBy(xpath="//div/div/div[@class='standard-actions']/button[2]")
+	public WebElement AR_STANDARD_ACTIONS;
+	
+	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
+	public WebElement AR_STANDARD_ACTIONS_FELX;
+	
+	@FindBy(xpath="//button[@class='btn btn-modal-close btn-link']")
+	public WebElement AR_CLOSE_POPUP;
+	
+	
+	@FindBy(xpath="//div/a/img[@class='app-logo']")
+	public WebElement AR_CLICK_LOGO;
+	
+	
+	
+	@FindBy(xpath="//span[text()='HR']")
+	public WebElement HR_Module1;
+	
+	@FindBy(xpath="//span[text()='Attendance']")
+	public WebElement CREATT_CLICKON_ATT;
+	
+	
+	@FindBy(xpath="//span[text()='dd Attendance ']")
+	public WebElement CREATT_CLICKON_ADD_ATT;
+	
+	@FindBy(xpath="//input[@data-fieldname='attendance_date']")
+	public WebElement CREATT_PICKT_DATE;
+	
+	@FindBy(xpath="//input[@data-fieldname='employee' and @data-doctype='Attendance']")
+	public WebElement CREATT_SELECT_USER;
+	
+	@FindBy(xpath="//span[text()='Maganti Venkata Sreedhar']/ancestor::li")
+	public WebElement CREATT_SELECT_USER_NAME;
+	
+	@FindBy(xpath="(//select[@data-fieldname='status'])[2]")
+	public WebElement CREATT_DATA_SELECT;
+	
+	@FindBy(xpath="//input[@data-fieldname='shift']")
+	public WebElement CREATT_SHIFT;
+	
+	@FindBy(xpath="//input[@data-doctype='Attendance']")
+	public WebElement CREATT_SHIFT2;
+	
+	@FindBy(xpath="//input[@data-fieldname='late_entry']")
+	public WebElement CREATT_LATEENTRY;
+	
+	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
+	public WebElement CREATT_SAVE;
+	
+	
+	
+	
+	@FindBy(xpath="//span[text()='HR Module']")
+	public WebElement LESS_HR_Module2;
+	
+	@FindBy(xpath="//span[text()='Less Hour Attendance Request']")
+	public WebElement LESS_ATT_REQ;
+	
+	@FindBy(xpath="//span[text()='dd Less Hour Attendance Request ']")
+	public WebElement LESS_ADD_ATT_REQ;
+		
+	
+	@FindBy(xpath="//input[@data-fieldname='employee']")
+	public WebElement LESS_SELECT_EMP1;
+	
+	@FindBy(xpath="//span[text()='Maganti Venkata Sreedhar']/ancestor::li")
+	public WebElement LESS_SELECT_EMP2;
+	
+	@FindBy(xpath="//input[@data-fieldtype='Date']")
+	public WebElement LESS_DATE;
+	
+	@FindBy(xpath="//div[text()='23']")
+	public WebElement LESS_DATE_SELECT;
+	
+	@FindBy(xpath="//select[@data-fieldtype='Select']")
+	public WebElement LESS_REASON;
+	
+	@FindBy(xpath="(//select[@data-fieldtype='Select'])[2]")
+	public WebElement LESS_STATUS;
+	
+	@FindBy(xpath="//textarea[@data-fieldname='explanation']")
+	public WebElement LESS_EXPLANATION;
+	
+	@FindBy(xpath="//button[@data-fieldtype='Attach']")
+	public WebElement LESS_DATA_FIELD_TYPE;
+	
+	@FindBy(xpath="//button[@class='btn btn-file-upload']/../input[@type='file']")
+	public WebElement LESS_FILE_UPLOAD;
+	
+	@FindBy(xpath="//div/div/div[@class='standard-actions']/button[2]")
+	public WebElement LESS_STANDARD_ACTIONS;
+	
+	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
+	public WebElement LESS_STANDARD_ACTIONS_FELX;
+	
+
+	
+	
+	
+	
 }

@@ -19,8 +19,8 @@ import ERP.pageLocators;
 		
 		public void loginUser() throws IOException {
 			try {
-				locators.USERNAME_FIELD.sendKeys("administrator");
-		        locators.PASSWORD_FIELD.sendKeys("ss-erp@2021");
+				locators.USERNAME_FIELD.sendKeys("adminqa@softsuave.com");
+		        locators.PASSWORD_FIELD.sendKeys("softsuave");
 		        locators.LOGIN_BUTTON.click();
 				
 			} catch (Exception e) {
