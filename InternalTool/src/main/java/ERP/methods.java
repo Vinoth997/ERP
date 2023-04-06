@@ -27,12 +27,12 @@ public class methods extends BaseClass{
 	 String UniqueID = "";
 	 String TimesheetID = "";
 
-		public methods(WebDriver driver) {
+	public methods(WebDriver driver) {
 
-			locators = PageFactory.initElements(driver, pageLocators.class);
-		}
-	 
-	 //Click on HRTab
+		locators = PageFactory.initElements(driver, pageLocators.class);
+	}
+
+	// Click on HRTab
 	public void clickOnHRTab() {
 		waitForElementClickable(locators.HR_TAB);
 		locators.HR_TAB.click();
@@ -122,8 +122,6 @@ public class methods extends BaseClass{
 		
 		System.out.println("'Previous Work Experience' has been entered");
 		
-
-		
 		//Save
 		waitForElement(locators.EMPLOYEE_SAVE);
 		locators.EMPLOYEE_SAVE.click();
@@ -143,24 +141,37 @@ public class methods extends BaseClass{
 		waitForElement(locators.CLICK_APP_LOGO);
 		locators.CLICK_APP_LOGO.click();
 		System.out.println("Clicked on the 'ERP App logo'");
-
 	}
-	
-	/**
-	 * Verifying the total leaves allocated for the employee
-	 * @param date
-	 * @throws InterruptedException
-	 */
-	public void verifyTotalLeaveAllocation(String Total_Allocated_Leaves) throws InterruptedException {
-		System.out.println("Validating Total Allocated Leaves for an Employee");
-		waitForElement(locators.LEAVE_APPLICATION_BUTTON);
+	  
+	 // Verifying the total leaves allocated for the employee
+	 // @param data
+	 // @throws InterruptedException
+	  
+	  public void verifyTotalLeaveAllocation(String Total_Allocated_Leaves) throws
+	  InterruptedException {
+			System.out.println("Validating Total Allocated Leaves for an Employee");
+			waitForElement(locators.LEAVE_APPLICATION_BUTTON);
+			locators.LEAVE_APPLICATION_BUTTON.click();
+			locators.ADD_LEAVE_APPLICATION_BUTTON.click();
+			waitForElementClickable(locators.LA_EMPLOYEE_NAME);
+			locators.LA_EMPLOYEE_NAME.sendKeys(EmployeeID + Keys.ENTER);
+			mouseoveractions(locators.TOTAL_ALLOCATED_LEAVE);
+			VerifyTestResult(locators.TOTAL_ALLOCATED_LEAVE, Total_Allocated_Leaves);
+			System.out.println("Verified the Total Leave allocation for an employee.");
+	  }
+
+	public void createNewLeaveApplication() throws InterruptedException {
 		locators.LEAVE_APPLICATION_BUTTON.click();
 		locators.ADD_LEAVE_APPLICATION_BUTTON.click();
 		waitForElementClickable(locators.LA_EMPLOYEE_NAME);
-		locators.LA_EMPLOYEE_NAME.sendKeys(EmployeeID+Keys.ENTER);
-		mouseoveractions(locators.TOTAL_ALLOCATED_LEAVE);
-		VerifyTestResult(locators.TOTAL_ALLOCATED_LEAVE, Total_Allocated_Leaves);
-		System.out.println("Verified the Total Leave allocation for an employee.");
+		locators.LA_EMPLOYEE_NAME.sendKeys(user.Leave_Employee_Name + Keys.ENTER);
+		Scrolljavascriptexecutor("down", locators.LEAVE_FROM_DATE);
+		locators.LEAVE_FROM_DATE.sendKeys(user.Employee_LEAVE_FROM_DATE + Keys.ENTER);
+		locators.LEAVE_TO_DATE.sendKeys(user.Employee_LEAVE_TO_DATE + Keys.ENTER);
+		Thread.sleep(20);
+		locators.LA_SAVE_BUTTON.click();
+		locators.HR_TAB.click();
+
 	}
 	
 	/**
@@ -361,6 +372,32 @@ public class methods extends BaseClass{
 		locators.LESS_STANDARD_ACTIONS_FELX.click();		
 		
 	}
-	
-	
+
+	public void Create_Leave_Application_on_already_createdDate() throws InterruptedException {
+		locators.LEAVE_APPLICATION_BUTTON.click();
+		locators.ADD_LEAVE_APPLICATION_BUTTON.click();
+		waitForElementClickable(locators.LA_EMPLOYEE_NAME);
+		locators.LA_EMPLOYEE_NAME.sendKeys(user.Leave_Employee_Name + Keys.ENTER);
+		Scrolljavascriptexecutor("down", locators.LEAVE_FROM_DATE);
+		locators.LEAVE_FROM_DATE.sendKeys(user.Employee_LEAVE_FROM_DATE + Keys.ENTER);
+		locators.LEAVE_TO_DATE.sendKeys(user.Employee_LEAVE_TO_DATE + Keys.ENTER);
+		Thread.sleep(20);
+		locators.LA_SAVE_BUTTON.click();
+		System.out.println(gettext(locators.LEAVE_APPLICATION_ALERT_MESSAGE));
+
+	}
+
+	public void ApproveLeaveApplication() {
+		locators.LEAVE_APPLICATION_BUTTON.click();
+		locators.CLICK_DRFT_LEAVE_APPLICATION.click();
+		Scrolljavascriptexecutor("down", locators.SCROLL_LEAVE_APPLICATION_STATUS);
+		
+		selectByVisibletext(locators.SELECT_LEAVE_APPLICATION_STATUS, "Approved");
+		locators.SAVE_LEAVE_APPLICATION_STATUS.click();
+		waitForElementClickable(locators.CLICK_ACTION_BUTTON);
+		locators.CLICK_ACTION_BUTTON.click();
+		locators.CLICK_ACTION.click();
+		locators.CLICK_APPROVE.click();
+
+	}
 }

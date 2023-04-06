@@ -107,6 +107,12 @@ public class UserInformation {
     public final String Work_Exp_Months = "5";
     
     public final String Exp_Certificate_Upload = "C:\\Users\\Admin\\Documents\\boolean.txt";
+    
+    public final String Leave_Employee_Name = "SS00386";
+    
+    public final String Employee_LEAVE_FROM_DATE = "27-03-2023";
+	
+    public final String Employee_LEAVE_TO_DATE = "27-03-2023";
 	}
 	
 
