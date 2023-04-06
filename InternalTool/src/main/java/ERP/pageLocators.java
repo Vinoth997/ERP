@@ -126,8 +126,7 @@ public class pageLocators {
 	
 	@FindBy(xpath="//button[@data-fieldtype='Attach']")
 	public WebElement AR_DATA_FIELD_TYPE;
-	
-	//@FindBy(xpath="//button[@class='btn btn-file-upload']/../input[@type='file']")
+
 	
 	@FindBy(xpath="//div[@class='file-upload-area']//button[@class='btn btn-file-upload']/following::input")
 	public WebElement AR_FILE_UPLOAD;

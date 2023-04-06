@@ -113,11 +113,6 @@ public class methods extends BaseClass{
 		waitForElement(locators.AR_ATTENDENCE_REQUEST);
 		locators.AR_ATTENDENCE_REQUEST.click();
 		locators.AR_ADD_ATTENDENCE_REQUEST.click();
-//		waitForElement(locators.AR_SELECT_USER);
-//		locators.AR_SELECT_USER.sendKeys(name);
-//		WebElement empName = driver.findElement(By.xpath("//span[text()='"+name+"']/ancestor::li"));
-//		empName.click();
-
 		locators.AR_SELECT_FROMDATE.click();
 		locators.AR_PICK_FROM_DATE.click();
 		locators.AR_SELECT_TO_DATE.click();
@@ -149,11 +144,6 @@ public class methods extends BaseClass{
 		locators.CREATT_CLICKON_ATT.click();
 		locators.CREATT_CLICKON_ADD_ATT.click();
 		Thread.sleep(3000);
-//		locators.CREATT_SELECT_USER.clear();
-//		locators.CREATT_SELECT_USER.sendKeys(name);
-//		WebElement empName = driver.findElement(By.xpath("//span[text()='"+name+"']/ancestor::li"));
-//		waitForElementClickable(empName);
-//		empName.click();
 		waitForElementClickable(locators.CREATT_PICKT_DATE);
 		locators.CREATT_PICKT_DATE.clear();
 		locators.CREATT_PICKT_DATE.sendKeys("03-04-2023" + Keys.ENTER);
@@ -183,10 +173,6 @@ public class methods extends BaseClass{
 		locators.LESS_ATT_REQ.click();
 		waitForElementClickable(locators.LESS_ADD_ATT_REQ);
 		locators.LESS_ADD_ATT_REQ.click();
-//		locators.LESS_SELECT_EMP1.sendKeys(name);	
-//		WebElement empName = driver.findElement(By.xpath("//span[text()='"+name+"']/ancestor::li"));
-//		waitForElementClickable(empName);
-//		empName.click();
 		locators.LESS_DATE.click();
 		locators.LESS_DATE_SELECT.click();
 		locators.LESS_REASON.click();
