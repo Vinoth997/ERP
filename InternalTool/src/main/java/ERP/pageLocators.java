@@ -101,8 +101,7 @@ public class pageLocators {
 	@FindBy(xpath="//input[@data-fieldname='employee']")
 	public WebElement AR_SELECT_USER;
 	
-	@FindBy(xpath="//span[text()='Maganti Venkata Sreedhar']/ancestor::li")
-	public WebElement AR_SELECT_USER_NAME;
+	
 	
 	
 	@FindBy(xpath="//input[@data-fieldname='from_date']")
@@ -128,8 +127,11 @@ public class pageLocators {
 	@FindBy(xpath="//button[@data-fieldtype='Attach']")
 	public WebElement AR_DATA_FIELD_TYPE;
 	
-	@FindBy(xpath="//button[@class='btn btn-file-upload']/../input[@type='file']")
+	//@FindBy(xpath="//button[@class='btn btn-file-upload']/../input[@type='file']")
+	
+	@FindBy(xpath="//div[@class='file-upload-area']//button[@class='btn btn-file-upload']/following::input")
 	public WebElement AR_FILE_UPLOAD;
+	
 	
 	@FindBy(xpath="//div/div/div[@class='standard-actions']/button[2]")
 	public WebElement AR_STANDARD_ACTIONS;
@@ -137,12 +139,7 @@ public class pageLocators {
 	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
 	public WebElement AR_STANDARD_ACTIONS_FELX;
 	
-	@FindBy(xpath="//button[@class='btn btn-modal-close btn-link']")
-	public WebElement AR_CLOSE_POPUP;
 	
-	
-	@FindBy(xpath="//div/a/img[@class='app-logo']")
-	public WebElement AR_CLICK_LOGO;
 	
 	
 	
@@ -153,18 +150,16 @@ public class pageLocators {
 	public WebElement CREATT_CLICKON_ATT;
 	
 	
-	@FindBy(xpath="//span[text()='dd Attendance ']")
+	@FindBy(xpath="//span[text()='dd Attendance ']/ancestor::button")
 	public WebElement CREATT_CLICKON_ADD_ATT;
 	
 	@FindBy(xpath="//input[@data-fieldname='attendance_date']")
 	public WebElement CREATT_PICKT_DATE;
 	
-	@FindBy(xpath="//input[@data-fieldname='employee' and @data-doctype='Attendance']")
+	
+	@FindBy(xpath="//input[@data-fieldname='employee']")
 	public WebElement CREATT_SELECT_USER;
-	
-	@FindBy(xpath="//span[text()='Maganti Venkata Sreedhar']/ancestor::li")
-	public WebElement CREATT_SELECT_USER_NAME;
-	
+		
 	@FindBy(xpath="(//select[@data-fieldname='status'])[2]")
 	public WebElement CREATT_DATA_SELECT;
 	
@@ -189,20 +184,18 @@ public class pageLocators {
 	@FindBy(xpath="//span[text()='Less Hour Attendance Request']")
 	public WebElement LESS_ATT_REQ;
 	
-	@FindBy(xpath="//span[text()='dd Less Hour Attendance Request ']")
+	@FindBy(xpath="//span[text()='dd Less Hour Attendance Request ']/ancestor::button")
 	public WebElement LESS_ADD_ATT_REQ;
 		
 	
 	@FindBy(xpath="//input[@data-fieldname='employee']")
 	public WebElement LESS_SELECT_EMP1;
 	
-	@FindBy(xpath="//span[text()='Maganti Venkata Sreedhar']/ancestor::li")
-	public WebElement LESS_SELECT_EMP2;
 	
 	@FindBy(xpath="//input[@data-fieldtype='Date']")
 	public WebElement LESS_DATE;
 	
-	@FindBy(xpath="//div[text()='23']")
+	@FindBy(xpath="//div[text()='31']")
 	public WebElement LESS_DATE_SELECT;
 	
 	@FindBy(xpath="//select[@data-fieldtype='Select']")
@@ -217,7 +210,7 @@ public class pageLocators {
 	@FindBy(xpath="//button[@data-fieldtype='Attach']")
 	public WebElement LESS_DATA_FIELD_TYPE;
 	
-	@FindBy(xpath="//button[@class='btn btn-file-upload']/../input[@type='file']")
+	@FindBy(xpath="@class='file-upload-area']//button[@class='btn btn-file-upload']/following::input")
 	public WebElement LESS_FILE_UPLOAD;
 	
 	@FindBy(xpath="//div/div/div[@class='standard-actions']/button[2]")

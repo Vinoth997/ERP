@@ -1,7 +1,9 @@
 package ERP;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 
 import basePackage.BaseClass;
@@ -100,27 +102,36 @@ public class methods extends BaseClass{
 		locators.HR_Module.click();
 	}
 	
-	public void AttendenceRequest() throws InterruptedException
+	/**
+	 * Creating Attendance Request for the employee.
+	 * @param emp name,date
+	 * @throws InterruptedException
+	 */
+	
+	public void AttendenceRequest(String name,String status) throws InterruptedException
 	{
 		waitForElement(locators.AR_ATTENDENCE_REQUEST);
 		locators.AR_ATTENDENCE_REQUEST.click();
 		locators.AR_ADD_ATTENDENCE_REQUEST.click();
-		waitForElement(locators.AR_SELECT_USER);
-		locators.AR_SELECT_USER.sendKeys(user.AR_emp_name);
-		locators.AR_SELECT_USER_NAME.click();
+//		waitForElement(locators.AR_SELECT_USER);
+//		locators.AR_SELECT_USER.sendKeys(name);
+//		WebElement empName = driver.findElement(By.xpath("//span[text()='"+name+"']/ancestor::li"));
+//		empName.click();
+
 		locators.AR_SELECT_FROMDATE.click();
 		locators.AR_PICK_FROM_DATE.click();
 		locators.AR_SELECT_TO_DATE.click();
 		locators.AR_PICK_TO_DATE.click();
-		selectByVisibletext(locators.AR_DATA_SELECT,user.AR_Reason);
+		selectByVisibletext(locators.AR_DATA_SELECT,status);
 		locators.AR_DATA_FIELD_NAME.sendKeys(user.AR_Explanation);
 		locators.AR_DATA_FIELD_TYPE.click();
 		locators.AR_FILE_UPLOAD.sendKeys(user.AR_Attach);
 		Thread.sleep(3000);
+		waitForElement(locators.AR_STANDARD_ACTIONS);
 		locators.AR_STANDARD_ACTIONS.click();
+		Thread.sleep(3000);
 		locators.AR_STANDARD_ACTIONS_FELX.click();
-		locators.AR_CLOSE_POPUP.click();
-		locators.AR_CLICK_LOGO.click();
+	
 	}
 	
 	public void HR1()
@@ -128,18 +139,31 @@ public class methods extends BaseClass{
 		locators.HR_Module1.click();
 	}
 	
-	public void addAttendence(String status)
+	/**
+	 * Creating Attendance for the employee
+	 * @param emp name, date status
+	 * @throws InterruptedException
+	 */
+	public void addAttendence(String status) throws InterruptedException
 	{
 		locators.CREATT_CLICKON_ATT.click();
 		locators.CREATT_CLICKON_ADD_ATT.click();
-		locators.CREATT_PICKT_DATE.click();
-		locators.CREATT_SELECT_USER.sendKeys(user.CREATT_emp_name);
-		locators.CREATT_SELECT_USER_NAME.click();
+		Thread.sleep(3000);
+//		locators.CREATT_SELECT_USER.clear();
+//		locators.CREATT_SELECT_USER.sendKeys(name);
+//		WebElement empName = driver.findElement(By.xpath("//span[text()='"+name+"']/ancestor::li"));
+//		waitForElementClickable(empName);
+//		empName.click();
+		waitForElementClickable(locators.CREATT_PICKT_DATE);
+		locators.CREATT_PICKT_DATE.clear();
+		locators.CREATT_PICKT_DATE.sendKeys("03-04-2023" + Keys.ENTER);
 		selectByVisibletext(locators.CREATT_DATA_SELECT,status);
 		locators.CREATT_SHIFT.sendKeys(user.CREATT_Shift);
 		locators.CREATT_SHIFT2.click();
 		locators.CREATT_LATEENTRY.click();
+		Thread.sleep(3000);
 		locators.CREATT_SAVE.click();
+		
 		
 	}
 	
@@ -148,12 +172,21 @@ public class methods extends BaseClass{
 		locators.LESS_HR_Module2.click();
 	}
 	
+	/**
+	 * Applying lessHourAttendenceRequest for the employee
+     * @param emp name, date
+	 * @throws InterruptedException
+	 */
+	
 	public void lessHourAttendenceRequest() throws InterruptedException
 	{
 		locators.LESS_ATT_REQ.click();
+		waitForElementClickable(locators.LESS_ADD_ATT_REQ);
 		locators.LESS_ADD_ATT_REQ.click();
-		locators.LESS_SELECT_EMP1.sendKeys(user.LESS_emp_name);
-		locators.LESS_SELECT_EMP2.click();
+//		locators.LESS_SELECT_EMP1.sendKeys(name);	
+//		WebElement empName = driver.findElement(By.xpath("//span[text()='"+name+"']/ancestor::li"));
+//		waitForElementClickable(empName);
+//		empName.click();
 		locators.LESS_DATE.click();
 		locators.LESS_DATE_SELECT.click();
 		locators.LESS_REASON.click();
@@ -162,11 +195,10 @@ public class methods extends BaseClass{
 		locators.LESS_EXPLANATION.sendKeys(user.LESS_EXPLANATION);
 		locators.LESS_DATA_FIELD_TYPE.click();
 		locators.LESS_FILE_UPLOAD.sendKeys(user.LESS_Attach);
-		Thread.sleep(3000);
+	    Thread.sleep(3000);
 		locators.LESS_STANDARD_ACTIONS.click();
-		locators.LESS_STANDARD_ACTIONS_FELX.click();
-		
-		
+		Thread.sleep(3000);
+		locators.LESS_STANDARD_ACTIONS_FELX.click();		
 		
 	}
 	

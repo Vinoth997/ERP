@@ -3,7 +3,9 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.BeforeTest;
 
+import ERP.methods;
 import ERP.pageLocators;
 
 	public class Login extends BaseClass {
@@ -17,16 +19,22 @@ import ERP.pageLocators;
 		
 		
 		
-		public void loginUser() throws IOException {
+		public void loginUser(String usernameEmail,String password) throws IOException {
 			try {
-				locators.USERNAME_FIELD.sendKeys("adminqa@softsuave.com");
-		        locators.PASSWORD_FIELD.sendKeys("softsuave");
+				locators.USERNAME_FIELD.sendKeys(usernameEmail);
+		        locators.PASSWORD_FIELD.sendKeys(password);
 		        locators.LOGIN_BUTTON.click();
 				
 			} catch (Exception e) {
 				takesScreenShotfull();
 				
 			}
+		
+		
+		
 		}
-
 	}
+
+	
+
+	

@@ -46,7 +46,7 @@ public class UserInformation {
     
     public final String Employee_Experienced = "Yes";
     
-    public final String AR_emp_name="Maganti Venkata Sreedhar";
+    public final String AR_emp_name="Vinoth Kumar C";
     
     public final String AR_Reason="On Duty";
     
@@ -54,7 +54,7 @@ public class UserInformation {
     
     public final String AR_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
     
-    public final String CREATT_emp_name="Maganti Venkata Sreedhar";
+    public final String CREATT_emp_name="Pushpa pushpa";
     
     public final String CREATT_Status="Less Hour";
     

@@ -23,7 +23,7 @@ public class HRTestCases extends BaseClass {
 	@BeforeMethod
 	private void open() throws IOException, InterruptedException {
 		browserOpen();
-		new Login(driver).loginUser();
+		new Login(driver).loginUser("adminqa@softsuave.com", "softsuave");
 		Methods = new methods(driver);
 	}
 	
