@@ -45,7 +45,44 @@ public class UserInformation {
     public final String Employee_Fresher = "No";
     
     public final String Employee_Experienced = "Yes";
+    
+    public final String Employee_Salutation = "Mr";
+    
+    public final String Employee_Annual_Ctc = "3,00,000";
+    
+    public final String Employment_Type = "Full-time";
+    
+    public final String Employment_Department= "Technical Department - SS";
+    
+    public final String Employment_Designation = "SET";
+    
+    public final String Employment_Branch = "Chennai";
+    
+    public final String Employment_Reports_To = "SS00422";
+    
+    public final String Attendance_Device_ID = "1";
+    
+    public final String Employee_Bond = "Yes";
+    
+    public final String Timesheet_Employee_ID_Junior1 = "SS00581";
+    
+    public final String Timesheet_Employee_ID_Junior2 = "SS00582";
 	
+    public final String Timesheet_Resource_Name = "Free Resource";
+    
+    public final String Timesheet_Project_Name = "Atlanta Zoo";
+    
+    public final String Previous_Company_Name = "Swiss SoftTech";
+    
+    public final String Previous_Company_Designation = "Senior QA";
+    
+    public final String Previous_Company_Address = "100 Lakeview estate";
+    
+    public final String Work_Exp_Years = "6";
+    
+    public final String Work_Exp_Months = "5";
+    
+    public final String Exp_Certificate_Upload = "C:\\Users\\Admin\\Documents\\boolean.txt";
 	}
 	
 

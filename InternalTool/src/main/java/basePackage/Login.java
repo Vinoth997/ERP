@@ -17,10 +17,10 @@ import ERP.pageLocators;
 		
 		
 		
-		public void loginUser() throws IOException {
+		public void loginUser(String employeeMail, String password) throws IOException {
 			try {
-				locators.USERNAME_FIELD.sendKeys("administrator");
-		        locators.PASSWORD_FIELD.sendKeys("ss-erp@2021");
+				locators.USERNAME_FIELD.sendKeys(employeeMail);
+		        locators.PASSWORD_FIELD.sendKeys(password);
 		        locators.LOGIN_BUTTON.click();
 				
 			} catch (Exception e) {
