@@ -210,6 +210,8 @@ public class BaseClass {
 	public static void javascriptExecutorForceClick(WebElement element) {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("arguments[0].click();", element);
+	}
+	
 	public String  gettext(WebElement element ) {
 	String text=element.getText();	
 	return text;
