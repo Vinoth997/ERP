@@ -67,6 +67,30 @@ public class UserInformation {
     public final String Timesheet_Employee_ID_Junior1 = "SS00581";
     
     public final String Timesheet_Employee_ID_Junior2 = "SS00582";
+    
+    public final String AR_emp_name="Vinoth Kumar C";
+    
+    public final String AR_Reason="On Duty";
+    
+    public final String AR_Explanation="Due to health Issue";
+    
+    public final String AR_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
+    
+    public final String CREATT_emp_name="Pushpa pushpa";
+    
+    public final String CREATT_Status="Less Hour";
+    
+    public final String CREATT_Shift="9 AM Shift";
+    
+    public final String LESS_emp_name="Maganti Venkata Sreedhar";
+    
+    public final String LESS_REASON="On Duty";
+    
+    public final String LESS_STATUS="Present";
+    
+    public final String LESS_EXPLANATION="Erp Issue";
+    
+    public final String LESS_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
 	
     public final String Timesheet_Resource_Name = "Free Resource";
     

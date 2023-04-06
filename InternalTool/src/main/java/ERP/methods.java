@@ -16,7 +16,9 @@ import basePackage.UserInformation;
 
 public class methods extends BaseClass{
 	
-	 pageLocators locators;
+	
+
+	pageLocators locators;
 	 
 	 UserInformation user = new UserInformation();
 	 
@@ -269,5 +271,96 @@ public class methods extends BaseClass{
 			javascriptExecutorForceClick(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
 		}
 	}
+	public void HR()
+	{
+		locators.HR_Module.click();
+	}
+	
+	/**
+	 * Creating Attendance Request for the employee.
+	 * @param emp name,date
+	 * @throws InterruptedException
+	 */
+	
+	public void AttendenceRequest(String name,String status) throws InterruptedException
+	{
+		waitForElement(locators.AR_ATTENDENCE_REQUEST);
+		locators.AR_ATTENDENCE_REQUEST.click();
+		locators.AR_ADD_ATTENDENCE_REQUEST.click();
+		locators.AR_SELECT_FROMDATE.click();
+		locators.AR_PICK_FROM_DATE.click();
+		locators.AR_SELECT_TO_DATE.click();
+		locators.AR_PICK_TO_DATE.click();
+		selectByVisibletext(locators.AR_DATA_SELECT,status);
+		locators.AR_DATA_FIELD_NAME.sendKeys(user.AR_Explanation);
+		locators.AR_DATA_FIELD_TYPE.click();
+		locators.AR_FILE_UPLOAD.sendKeys(user.AR_Attach);
+		Thread.sleep(3000);
+		waitForElement(locators.AR_STANDARD_ACTIONS);
+		locators.AR_STANDARD_ACTIONS.click();
+		Thread.sleep(3000);
+		locators.AR_STANDARD_ACTIONS_FELX.click();
+	
+	}
+	
+	public void HR1()
+	{
+		locators.HR_Module1.click();
+	}
+	
+	/**
+	 * Creating Attendance for the employee
+	 * @param emp name, date status
+	 * @throws InterruptedException
+	 */
+	public void addAttendence(String status) throws InterruptedException
+	{
+		locators.CREATT_CLICKON_ATT.click();
+		locators.CREATT_CLICKON_ADD_ATT.click();
+		Thread.sleep(3000);
+		waitForElementClickable(locators.CREATT_PICKT_DATE);
+		locators.CREATT_PICKT_DATE.clear();
+		locators.CREATT_PICKT_DATE.sendKeys("03-04-2023" + Keys.ENTER);
+		selectByVisibletext(locators.CREATT_DATA_SELECT,status);
+		locators.CREATT_SHIFT.sendKeys(user.CREATT_Shift);
+		locators.CREATT_SHIFT2.click();
+		locators.CREATT_LATEENTRY.click();
+		Thread.sleep(3000);
+		locators.CREATT_SAVE.click();
+		
+		
+	}
+	
+	public void HR2()
+	{
+		locators.LESS_HR_Module2.click();
+	}
+	
+	/**
+	 * Applying lessHourAttendenceRequest for the employee
+     * @param emp name, date
+	 * @throws InterruptedException
+	 */
+	
+	public void lessHourAttendenceRequest() throws InterruptedException
+	{
+		locators.LESS_ATT_REQ.click();
+		waitForElementClickable(locators.LESS_ADD_ATT_REQ);
+		locators.LESS_ADD_ATT_REQ.click();
+		locators.LESS_DATE.click();
+		locators.LESS_DATE_SELECT.click();
+		locators.LESS_REASON.click();
+		selectByVisibletext(locators.LESS_REASON,user.LESS_REASON);
+		selectByVisibletext(locators.LESS_STATUS,user.LESS_STATUS);
+		locators.LESS_EXPLANATION.sendKeys(user.LESS_EXPLANATION);
+		locators.LESS_DATA_FIELD_TYPE.click();
+		locators.LESS_FILE_UPLOAD.sendKeys(user.LESS_Attach);
+	    Thread.sleep(3000);
+		locators.LESS_STANDARD_ACTIONS.click();
+		Thread.sleep(3000);
+		locators.LESS_STANDARD_ACTIONS_FELX.click();		
+		
+	}
+	
 	
 }
