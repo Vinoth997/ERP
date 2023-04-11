@@ -270,8 +270,7 @@ public class methods extends BaseClass{
 		SimpleDateFormat format = new SimpleDateFormat("dd-MM-yyyy");
 		Date currentDate = new Date();
 		String formattedDate = format.format(currentDate);
-		
-		locators.TIMESHEET_DATE.sendKeys(formattedDate);
+		locators.TIMESHEET_DATE.sendKeys(formattedDate+" 10:00");
 		locators.TIMESHEET_HOURS.sendKeys("8");
 		Thread.sleep(2000);
 		waitForElementClickable(locators.TIMESHEET_PROJECT);
