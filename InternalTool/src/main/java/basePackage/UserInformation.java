@@ -64,9 +64,9 @@ public class UserInformation {
     
     public final String Employee_Bond = "Yes";
     
-    public final String Timesheet_Employee_ID_Junior1 = "SS00581";
+    public final String Employee_ID_Junior1 = "SS00581";
     
-    public final String Timesheet_Employee_ID_Junior2 = "SS00582";
+    public final String Employee_ID_Junior2 = "SS00582";
     
     public final String AR_emp_name="Vinoth Kumar C";
     
@@ -90,7 +90,9 @@ public class UserInformation {
     
     public final String LESS_EXPLANATION="Erp Issue";
     
-    public final String LESS_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
+//    public final String LESS_Attach="D:\\Bills_cc\\02-05-2022\\Biscuits.pdf";
+    
+    public final String LESS_Attach="D:\\Json\\employee.json";
 	
     public final String Timesheet_Resource_Name = "Free Resource";
     
@@ -110,9 +112,19 @@ public class UserInformation {
     
     public final String Leave_Employee_Name = "SS00386";
     
-    public final String Employee_LEAVE_FROM_DATE = "27-03-2023";
+    public final String From_Date = "27-03-2023";
 	
-    public final String Employee_LEAVE_TO_DATE = "27-03-2023";
+    public final String To_Date = "27-03-2023";
+    
+    public final String Admin = "adminqa@softsuave.com";
+    
+    public final String Password = "softsuave";
+    
+    public final String Junior_Before_Date ="juniorbeforedate65267@softsuave.com";
+    
+    public final String Attendance_Date ="02-03-2023";
+    
+    
 	}
 	
 

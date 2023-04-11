@@ -1,5 +1,6 @@
 package ERP;
 
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Random;
@@ -17,6 +18,8 @@ import basePackage.UserInformation;
 public class methods extends BaseClass{
 	
 	
+
+	private static final WebElement APPROVED_TEXT = null;
 
 	pageLocators locators;
 	 
@@ -113,11 +116,23 @@ public class methods extends BaseClass{
 			locators.WORK_EXP_ADDRESS.sendKeys(user.Previous_Company_Address);
 			locators.WORK_EXP_IN_YEARS.sendKeys(user.Work_Exp_Years);
 			locators.WORK_EXP_IN_MONTHS.sendKeys(user.Work_Exp_Months);
+			waitForElement(locators.WORK_EXP_ATTACH_CERTIFICATE_BUTTON);
+			Scrolljavascriptexecutor("down", locators.WORK_EXP_ATTACH_CERTIFICATE_BUTTON);
 			waitForElementClickable(locators.WORK_EXP_ATTACH_CERTIFICATE_BUTTON);
 			locators.WORK_EXP_ATTACH_CERTIFICATE_BUTTON.click();
-			locators.CERTIFICATE_UPLOAD.sendKeys(user.Exp_Certificate_Upload);
+			String projectFolderPath = System.getProperty("user.dir");
+			File file = new File(projectFolderPath + "/Attachments/file.jpg");
+			locators.CERTIFICATE_UPLOAD.sendKeys(file.getAbsolutePath());
+			waitForElement(locators.UPLOAD_BUTTON);
 			locators.UPLOAD_BUTTON.click();
-			mouseoveractions(locators.SHORTCUT_KEY);
+			Thread.sleep(3000);
+			WebElement close = driver.findElement(By.xpath("//button[@class='btn btn-modal-close btn-link']"));
+			if(close.isDisplayed()) {
+				waitForElement(close);
+				javascriptExecutorForceClick(close);
+			}
+//			mouseoveractions(locators.SHORTCUT_KEY);
+			javascriptExecutorForceClick(locators.SHORTCUT_KEY);
 		}
 		
 		System.out.println("'Previous Work Experience' has been entered");
@@ -160,17 +175,21 @@ public class methods extends BaseClass{
 			System.out.println("Verified the Total Leave allocation for an employee.");
 	  }
 
-	public void createNewLeaveApplication() throws InterruptedException {
+	public void createNewLeaveApplication(String fromDate, String toDate) throws InterruptedException {
 		locators.LEAVE_APPLICATION_BUTTON.click();
+		System.out.println("Clicked on Leave Application Button");
 		locators.ADD_LEAVE_APPLICATION_BUTTON.click();
+		System.out.println("Clicked on Add Leave Application Button");
 		waitForElementClickable(locators.LA_EMPLOYEE_NAME);
-		locators.LA_EMPLOYEE_NAME.sendKeys(user.Leave_Employee_Name + Keys.ENTER);
+//		locators.LA_EMPLOYEE_NAME.sendKeys(user.Leave_Employee_Name + Keys.ENTER);
 		Scrolljavascriptexecutor("down", locators.LEAVE_FROM_DATE);
-		locators.LEAVE_FROM_DATE.sendKeys(user.Employee_LEAVE_FROM_DATE + Keys.ENTER);
-		locators.LEAVE_TO_DATE.sendKeys(user.Employee_LEAVE_TO_DATE + Keys.ENTER);
-		Thread.sleep(20);
+		locators.LEAVE_FROM_DATE.sendKeys(fromDate+ Keys.ENTER);
+		locators.LEAVE_TO_DATE.sendKeys(toDate + Keys.ENTER);
+		Thread.sleep(2000);
 		locators.LA_SAVE_BUTTON.click();
-		locators.HR_TAB.click();
+		Thread.sleep(3000);
+		System.out.println("Created leave application for "+fromDate+" and "+toDate+" .");
+//		locators.HR_TAB.click();
 
 	}
 	
@@ -216,7 +235,7 @@ public class methods extends BaseClass{
 			
 		}	
 	
-	public void createTimeSheet(String employeeName) throws InterruptedException {
+	public void create_TimeSheet(String employeeName) throws InterruptedException {
 		waitForElement(locators.TIMESHEET_BUTTON);
 		locators.TIMESHEET_BUTTON.click();
 		System.out.println("Clicked on Timesheet Button");
@@ -271,20 +290,44 @@ public class methods extends BaseClass{
 		    SavedPopupIsDisplayed = false;
 		}
 		if(SavedPopupIsDisplayed==true) {
+			VerifyTextValidation(locators.POPUP_ALERT, "Saved");
 			Thread.sleep(2000);
 			TimesheetID = locators.TIMESHEET_ID.getText();
-			System.out.println("Timesheet ID : "+TimesheetID);		
+			System.out.println("Timesheet ID : "+TimesheetID);
+			locators.CLOSE_POPUP_ALERT.click();
 		}else if(locators.ALERT_TEXT_MESSAGE.isDisplayed())
 		{
 			String alerttext = locators.ALERT_TEXT_MESSAGE.getText();
-			System.out.println("Error Message : "+alerttext);
+			VerifyTextValidation(locators.ALERT_TEXT_MESSAGE, "Saved");
 			waitForElementClickable(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
 			javascriptExecutorForceClick(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
 		}
+		
 	}
-	public void HR()
+	
+	public void approve_Timesheet() throws InterruptedException {
+		waitForElement(locators.TIMESHEET_BUTTON);
+		locators.TIMESHEET_BUTTON.click();
+		System.out.println("Clicked on Timesheet Button");
+		waitForElementClickable(locators.DRAFT_TIMESHEET);
+		locators.DRAFT_TIMESHEET.click();
+		waitForElementClickable(locators.SUBMIT_BUTTON);
+		locators.SUBMIT_BUTTON.click();
+		Thread.sleep(2000);
+		waitForElementClickable(locators.CREATT_YES_CONFIRMATION);
+		locators.CREATT_YES_CONFIRMATION.click();
+		waitForElement(locators.POPUP_ALERT);
+		VerifyTextValidation(locators.POPUP_ALERT, constants.Success_Text);
+		Thread.sleep(3000);
+		VerifyTestResult(locators.APPROVED_SUBMITTED_TEXT, constants.APPROVED_Submitted_Text);
+		Thread.sleep(4000);
+	}
+	
+	public void hR_Module_Tab()
 	{
+		waitForElementClickable(locators.HR_Module);
 		locators.HR_Module.click();
+		System.out.println("The 'HR Module' tab has been clicked");
 	}
 	
 	/**
@@ -293,25 +336,32 @@ public class methods extends BaseClass{
 	 * @throws InterruptedException
 	 */
 	
-	public void AttendenceRequest(String name,String status) throws InterruptedException
+	public void attendance_Request(String fromDate, String toDate, String status) throws InterruptedException
 	{
 		waitForElement(locators.AR_ATTENDENCE_REQUEST);
 		locators.AR_ATTENDENCE_REQUEST.click();
+		System.out.println("Clicked on Attendance Request Button");
 		locators.AR_ADD_ATTENDENCE_REQUEST.click();
-		locators.AR_SELECT_FROMDATE.click();
-		locators.AR_PICK_FROM_DATE.click();
-		locators.AR_SELECT_TO_DATE.click();
-		locators.AR_PICK_TO_DATE.click();
+		locators.AR_SELECT_FROMDATE.clear();
+		locators.AR_SELECT_FROMDATE.sendKeys(fromDate);
+//		locators.AR_PICK_FROM_DATE.click();
+		locators.AR_SELECT_TO_DATE.clear();
+		locators.AR_SELECT_TO_DATE.sendKeys(toDate);
+//		locators.AR_PICK_TO_DATE.click();
 		selectByVisibletext(locators.AR_DATA_SELECT,status);
 		locators.AR_DATA_FIELD_NAME.sendKeys(user.AR_Explanation);
 		locators.AR_DATA_FIELD_TYPE.click();
-		locators.AR_FILE_UPLOAD.sendKeys(user.AR_Attach);
+		String projectFolderPath = System.getProperty("user.dir");
+		File file = new File(projectFolderPath + "/Attachments/file.jpg");
+		locators.AR_FILE_UPLOAD.sendKeys(file.getAbsolutePath());
 		Thread.sleep(3000);
 		waitForElement(locators.AR_STANDARD_ACTIONS);
 		locators.AR_STANDARD_ACTIONS.click();
 		Thread.sleep(3000);
 		locators.AR_STANDARD_ACTIONS_FELX.click();
-	
+		waitForElement(locators.POPUP_ALERT);
+		VerifyTextValidation(locators.POPUP_ALERT, constants.Success_Text);
+		System.out.println(gettext(locators.EMAIL_SEND_TO));	
 	}
 	
 	public void HR1()
@@ -324,22 +374,35 @@ public class methods extends BaseClass{
 	 * @param emp name, date status
 	 * @throws InterruptedException
 	 */
-	public void addAttendence(String status) throws InterruptedException
+	public void add_Attendence(String employeeId, String attendanceDate,String status) throws InterruptedException
 	{
 		locators.CREATT_CLICKON_ATT.click();
+		System.out.println("Clicked on Attendance Button");
 		locators.CREATT_CLICKON_ADD_ATT.click();
+		System.out.println("Clicked on Add Attendance Button");
 		Thread.sleep(3000);
+		waitForElement(locators.CREATT_SELECT_USER);
+		locators.CREATT_SELECT_USER.sendKeys(employeeId + Keys.ENTER);
 		waitForElementClickable(locators.CREATT_PICKT_DATE);
 		locators.CREATT_PICKT_DATE.clear();
-		locators.CREATT_PICKT_DATE.sendKeys("03-04-2023" + Keys.ENTER);
+		locators.CREATT_PICKT_DATE.sendKeys(attendanceDate + Keys.ENTER);
+		System.out.println("Selected Attendance Date as "+attendanceDate);
 		selectByVisibletext(locators.CREATT_DATA_SELECT,status);
+		System.out.println("Selected Attendance status as "+status);
 		locators.CREATT_SHIFT.sendKeys(user.CREATT_Shift);
 		locators.CREATT_SHIFT2.click();
 		locators.CREATT_LATEENTRY.click();
 		Thread.sleep(3000);
 		locators.CREATT_SAVE.click();
-		
-		
+		Thread.sleep(2000);
+		locators.CLOSE_POPUP_ALERT.click();
+		locators.CREATT_SUBMIT.click();
+		Thread.sleep(2000);
+		waitForElementClickable(locators.CREATT_YES_CONFIRMATION);
+		locators.CREATT_YES_CONFIRMATION.click();
+		Thread.sleep(2000);
+		locators.CLOSE_POPUP_ALERT.click();
+		VerifyTextValidation(locators.POPUP_ALERT, constants.Success_Text);
 	}
 	
 	public void HR2()
@@ -353,51 +416,149 @@ public class methods extends BaseClass{
 	 * @throws InterruptedException
 	 */
 	
-	public void lessHourAttendenceRequest() throws InterruptedException
+	public void less_Hour_Attendance_Request(String LessHourDate) throws InterruptedException
 	{
 		locators.LESS_ATT_REQ.click();
 		waitForElementClickable(locators.LESS_ADD_ATT_REQ);
 		locators.LESS_ADD_ATT_REQ.click();
-		locators.LESS_DATE.click();
-		locators.LESS_DATE_SELECT.click();
+		locators.LESS_DATE.clear();
+		locators.LESS_DATE.sendKeys(LessHourDate);
+//		locators.LESS_DATE_SELECT.click();
 		locators.LESS_REASON.click();
 		selectByVisibletext(locators.LESS_REASON,user.LESS_REASON);
-		selectByVisibletext(locators.LESS_STATUS,user.LESS_STATUS);
+		selectByVisibletext(locators.LESS_STATUS_CHANGE_TO,user.LESS_STATUS);
 		locators.LESS_EXPLANATION.sendKeys(user.LESS_EXPLANATION);
 		locators.LESS_DATA_FIELD_TYPE.click();
-		locators.LESS_FILE_UPLOAD.sendKeys(user.LESS_Attach);
+		String projectFolderPath = System.getProperty("user.dir");
+		File file = new File(projectFolderPath + "/Attachments/file.jpg");
+		locators.LESS_FILE_UPLOAD.sendKeys(file.getAbsolutePath());
 	    Thread.sleep(3000);
 		locators.LESS_STANDARD_ACTIONS.click();
 		Thread.sleep(3000);
-		locators.LESS_STANDARD_ACTIONS_FELX.click();		
+		locators.LESS_STANDARD_ACTIONS_FELX.click();	
+		waitForElement(locators.POPUP_ALERT);
+		VerifyTextValidation(locators.POPUP_ALERT, constants.Success_Text);
+		Thread.sleep(2000);
+		javascriptExecutorForceClick(locators.CLOSE_POPUP_ALERT);
+		System.out.println(gettext(locators.EMAIL_SEND_TO));
+		Thread.sleep(2000);
+		waitForElementClickable(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+		javascriptExecutorForceClick(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+	}
+	
+	public void approve_Less_Hour_Request(String status) throws InterruptedException {
+//		locators.LEAVE_APPLICATION_BUTTON.click();
+		waitForElementClickable(locators.LESS_ATT_REQ);
+		locators.LESS_ATT_REQ.click();
+		System.out.println("Clicked on Less Hour Attendance Request Button");
+		locators.DRAFT_LESS_HOUR.click();
 		
+		selectByVisibletext(locators.LESS_HOUR_APPROVER_STATUS, status);
+		waitForElementClickable(locators.SAVE_LEAVE_APPLICATION_STATUS);
+		locators.SAVE_LEAVE_APPLICATION_STATUS.click();
+		Thread.sleep(2000);
+		locators.CLOSE_POPUP_ALERT.click();
+		waitForElementClickable(locators.CREATT_SUBMIT);
+		locators.CREATT_SUBMIT.click();
+		Thread.sleep(2000);
+//		locators.CLOSE_POPUP_ALERT.click();
+		waitForElementClickable(locators.CREATT_YES_CONFIRMATION);
+		locators.CREATT_YES_CONFIRMATION.click();
+		Thread.sleep(2000);
+		waitForElementClickable(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+		javascriptExecutorForceClick(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+		VerifyTextValidation(locators.APPROVED_SUBMITTED_TEXT, constants.APPROVED_Submitted_Text);
+		Thread.sleep(2000);
 	}
 
-	public void Create_Leave_Application_on_already_createdDate() throws InterruptedException {
+	public void create_Leave_Application_On_Already_CreatedDate(String fromDate, String toDate) throws InterruptedException {
 		locators.LEAVE_APPLICATION_BUTTON.click();
 		locators.ADD_LEAVE_APPLICATION_BUTTON.click();
 		waitForElementClickable(locators.LA_EMPLOYEE_NAME);
-		locators.LA_EMPLOYEE_NAME.sendKeys(user.Leave_Employee_Name + Keys.ENTER);
+//		locators.LA_EMPLOYEE_NAME.sendKeys(user.Leave_Employee_Name + Keys.ENTER);
 		Scrolljavascriptexecutor("down", locators.LEAVE_FROM_DATE);
-		locators.LEAVE_FROM_DATE.sendKeys(user.Employee_LEAVE_FROM_DATE + Keys.ENTER);
-		locators.LEAVE_TO_DATE.sendKeys(user.Employee_LEAVE_TO_DATE + Keys.ENTER);
+		locators.LEAVE_FROM_DATE.sendKeys(fromDate + Keys.ENTER);
+		locators.LEAVE_TO_DATE.sendKeys(toDate + Keys.ENTER);
 		Thread.sleep(20);
 		locators.LA_SAVE_BUTTON.click();
 		System.out.println(gettext(locators.LEAVE_APPLICATION_ALERT_MESSAGE));
 
 	}
 
-	public void ApproveLeaveApplication() {
+	public void approve_Leave_Application(String status) {
 		locators.LEAVE_APPLICATION_BUTTON.click();
+		System.out.println("Clicked on Leave Application Button");
 		locators.CLICK_DRFT_LEAVE_APPLICATION.click();
 		Scrolljavascriptexecutor("down", locators.SCROLL_LEAVE_APPLICATION_STATUS);
 		
-		selectByVisibletext(locators.SELECT_LEAVE_APPLICATION_STATUS, "Approved");
+		selectByVisibletext(locators.SELECT_LEAVE_APPLICATION_STATUS, status);
+		waitForElementClickable(locators.SAVE_LEAVE_APPLICATION_STATUS);
 		locators.SAVE_LEAVE_APPLICATION_STATUS.click();
 		waitForElementClickable(locators.CLICK_ACTION_BUTTON);
 		locators.CLICK_ACTION_BUTTON.click();
+		waitForElementClickable(locators.CLICK_ACTION);
 		locators.CLICK_ACTION.click();
-		locators.CLICK_APPROVE.click();
+		VerifyTextValidation(locators.APPROVED_TEXT, constants.APPROVED_TEXT);
+		//assert steps need to be included
+//		waitForElement(locators.CLICK_APPROVE);
+//		waitForElementClickable(locators.CLICK_APPROVE);
+//		locators.CLICK_APPROVE.click();
 
 	}
+	
+	public void logout_User() throws InterruptedException {
+		Thread.sleep(5000);
+		waitForElementClickable(locators.AVATAR_ICON);
+		javascriptExecutorForceClick(locators.AVATAR_ICON);
+		waitForElementClickable(locators.LOGOUT_BUTTON);
+		javascriptExecutorForceClick(locators.LOGOUT_BUTTON);
+		Thread.sleep(3000);
+	}
+	
+	public void cancel_Less_Hour_Attendance()throws InterruptedException {
+		Thread.sleep(4000);
+		locators.LEAVE_CANCEL.click();
+		Thread.sleep(4000);
+		waitForElementClickable(locators.CANCEL_YES_CONFIRMATION);
+		javascriptExecutorForceClick(locators.CANCEL_YES_CONFIRMATION);
+		Thread.sleep(3000);
+		VerifyTextValidation(locators.POPUP_ALERT, constants.CANCELLED);
+		waitForElement(locators.ALERT_TEXT_MESSAGE);
+		System.out.println(gettext(locators.ALERT_TEXT_MESSAGE));
+		Thread.sleep(4000);
+		waitForElementClickable(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+		javascriptExecutorForceClick(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+		Thread.sleep(2000);
+		if(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE.isDisplayed()) {
+			javascriptExecutorForceClick(locators.NEW_USER_WELCOME_EMAIL_SENT_POPUP_CLOSE);
+		}
+	}
+	
+	public void cancel_Leave()throws InterruptedException {
+		Thread.sleep(4000);
+		locators.LEAVE_CANCEL.click();
+		Thread.sleep(4000);
+		locators.CANCEL_ALL.click();
+		waitForElement(locators.POPUP_ALERT);
+		VerifyTextValidation(locators.POPUP_ALERT, constants.CANCELLED);
+	}
+	
+	public void timesheet_Delete() {
+		waitForElementClickable(locators.TIMESHEET_EDIT_BUTTON);
+		locators.TIMESHEET_EDIT_BUTTON.click();
+		waitForElementClickable(locators.TIMESHEET_DELETE_BUTTON);
+		locators.TIMESHEET_DELETE_BUTTON.click();
+		VerifyTextValidation(locators.VERIFY_NO_DATA, "No Data");
+	}
+	
+	public void timesheet_cancel() throws InterruptedException {
+		Thread.sleep(4000);
+		locators.LEAVE_CANCEL.click();
+		Thread.sleep(4000);
+		waitForElementClickable(locators.CANCEL_YES_CONFIRMATION);
+		javascriptExecutorForceClick(locators.CANCEL_YES_CONFIRMATION);
+		waitForElement(locators.POPUP_ALERT);
+		VerifyTextValidation(locators.POPUP_ALERT, constants.CANCELLED);
+	}
+	
 }

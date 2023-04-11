@@ -30,7 +30,7 @@ public class CreateTimeSheet extends BaseClass{
 		Login.loginUser("juniorbeforedate65267@softsuave.com", "softsuave");
 		Methods.clickOnHRTab();
 		Methods.clickOnProjectTab();
-		Methods.createTimeSheet(user.Timesheet_Employee_ID_Junior1);
+		Methods.create_TimeSheet(user.Employee_ID_Junior1);
 	}
 	
 	@Test(priority = 1, enabled = true)
@@ -38,16 +38,16 @@ public class CreateTimeSheet extends BaseClass{
 		Login.loginUser("juniorbeforedate65267@softsuave.com", "softsuave");
 		Methods.clickOnHRTab();
 		Methods.clickOnProjectTab();
-		Methods.createTimeSheet(user.Timesheet_Employee_ID_Junior1);
+		Methods.create_TimeSheet(user.Employee_ID_Junior1);
 	}
 	
 	@AfterMethod
-	public void close() {
-		driver.close();
+	public void logout() throws InterruptedException {
+		Methods.logout_User();
 	}
 	
 	@AfterTest
-	public void teardown() {
+	public void close() {
 		driver.quit();
 	}
 

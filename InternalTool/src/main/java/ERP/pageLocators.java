@@ -68,7 +68,7 @@ public class pageLocators {
 	@FindBy(xpath = "//div[@id='alert-container']//div[@class='alert-message']")
 	public WebElement POPUP_ALERT;
 
-	@FindBy(xpath = "//a[@class='close']")
+	@FindBy(xpath = "//div[@id='alert-container']//a[@class='close']")
 	public WebElement CLOSE_POPUP_ALERT;
 
 	@FindBy(xpath = "//a[@class='navbar-brand navbar-home']")
@@ -116,7 +116,7 @@ public class pageLocators {
 	@FindBy(xpath = "//div[@class='actions-btn-group']//span[@data-label='Actions']/ancestor::button")
 	public WebElement CLICK_ACTION_BUTTON;
 
-	@FindBy(xpath = "//ul[@class=\"dropdown-menu dropdown-menu-right show\"]//span[@data-label='Approve']")
+	@FindBy(xpath = "//ul[@class='dropdown-menu dropdown-menu-right show']//span[@data-label='Approve']/..")
 	public WebElement CLICK_APPROVE;
 	
 	@FindBy(xpath = "//span[@class='menu-item-label' and text()='pprove']")
@@ -262,8 +262,22 @@ public class pageLocators {
 	
 	@FindBy(xpath = "//kbd[text()='Ctrl + Up']")
 	public WebElement SHORTCUT_KEY;
+	
 	@FindBy(xpath="//span[text()='HR']")
 	public WebElement HR_Module;
+	
+	@FindBy(xpath="//span[@title='Attendance']/ancestor::div[contains(@class,'shortcut-widget-box')]")
+	public WebElement ATTENDANCE_BUTTON;
+	
+	@FindBy(xpath="(//span[text()=' Draft'])[1]/preceding::a[@data-doctype='Attendance']")
+	public WebElement DRAFT_ATTENDANCE;
+	
+	@FindBy(xpath="(//span[text()=' Draft'])[1]/preceding::a[@data-doctype='Less Hour Attendance Request']")
+	public WebElement DRAFT_LESS_HOUR;
+	
+	@FindBy(xpath="//select[@data-fieldtype='Select' and @data-doctype='Attendance']")
+	public WebElement SELECT_ATTENDANCE_STATUS;
+	
 	
 	@FindBy(xpath="//span[text()='Attendance Request']")
 	public WebElement AR_ATTENDENCE_REQUEST;
@@ -295,10 +309,8 @@ public class pageLocators {
 	@FindBy(xpath="//button[@data-fieldtype='Attach']")
 	public WebElement AR_DATA_FIELD_TYPE;
 
-	
 	@FindBy(xpath="//div[@class='file-upload-area']//button[@class='btn btn-file-upload']/following::input")
 	public WebElement AR_FILE_UPLOAD;
-	
 	
 	@FindBy(xpath="//div/div/div[@class='standard-actions']/button[2]")
 	public WebElement AR_STANDARD_ACTIONS;
@@ -306,12 +318,14 @@ public class pageLocators {
 	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
 	public WebElement AR_STANDARD_ACTIONS_FELX;
 	
+	@FindBy(xpath="//div[@class='modal-dialog msgprint-dialog']//div[@class='msgprint']")
+	public WebElement EMAIL_SEND_TO;
+	
 	@FindBy(xpath="//span[text()='HR']")
 	public WebElement HR_Module1;
 	
 	@FindBy(xpath="//span[text()='Attendance']")
 	public WebElement CREATT_CLICKON_ATT;
-	
 	
 	@FindBy(xpath="//span[text()='dd Attendance ']/ancestor::button")
 	public WebElement CREATT_CLICKON_ADD_ATT;
@@ -319,8 +333,7 @@ public class pageLocators {
 	@FindBy(xpath="//input[@data-fieldname='attendance_date']")
 	public WebElement CREATT_PICKT_DATE;
 	
-	
-	@FindBy(xpath="//input[@data-fieldname='employee']")
+	@FindBy(xpath="//input[@data-fieldname='employee' and @data-doctype='Attendance']")
 	public WebElement CREATT_SELECT_USER;
 		
 	@FindBy(xpath="(//select[@data-fieldname='status'])[2]")
@@ -338,31 +351,44 @@ public class pageLocators {
 	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
 	public WebElement CREATT_SAVE;
 	
+	@FindBy(xpath="//button[@data-label='Submit']")
+	public WebElement CREATT_SUBMIT;
+	
+	@FindBy(xpath="//button[contains(text(),'Yes')]")
+	public WebElement CREATT_YES_CONFIRMATION;
+	
+	@FindBy(xpath="//div[@class='modal fade show']//button[contains(text(),'Yes')]")
+	public WebElement CANCEL_YES_CONFIRMATION;
+	
 	@FindBy(xpath="//span[text()='HR Module']")
 	public WebElement LESS_HR_Module2;
 	
-	@FindBy(xpath="//span[text()='Less Hour Attendance Request']")
+	@FindBy(xpath="//span[text()='Less Hour Attendance Request']/ancestor::a")
 	public WebElement LESS_ATT_REQ;
 	
 	@FindBy(xpath="//span[text()='dd Less Hour Attendance Request ']/ancestor::button")
 	public WebElement LESS_ADD_ATT_REQ;
 		
-	
 	@FindBy(xpath="//input[@data-fieldname='employee']")
 	public WebElement LESS_SELECT_EMP1;
 	
-	
-	@FindBy(xpath="//input[@data-fieldtype='Date']")
+	@FindBy(xpath="//input[@data-fieldname='attendance_date' and @data-doctype='Less Hour Attendance Request']")
 	public WebElement LESS_DATE;
 	
 	@FindBy(xpath="//div[text()='31']")
 	public WebElement LESS_DATE_SELECT;
 	
-	@FindBy(xpath="//select[@data-fieldtype='Select']")
+	@FindBy(xpath="//select[@data-fieldtype='Select' and @data-fieldname='reason']")
 	public WebElement LESS_REASON;
+	
+	@FindBy(xpath="//select[@data-fieldtype='Select' and @data-fieldname='request_to']")
+	public WebElement LESS_STATUS_CHANGE_TO;
 	
 	@FindBy(xpath="(//select[@data-fieldtype='Select'])[2]")
 	public WebElement LESS_STATUS;
+	
+	@FindBy(xpath="//select[@data-fieldname='status' and @data-doctype='Less Hour Attendance Request']")
+	public WebElement LESS_HOUR_APPROVER_STATUS;
 	
 	@FindBy(xpath="//textarea[@data-fieldname='explanation']")
 	public WebElement LESS_EXPLANATION;
@@ -370,7 +396,7 @@ public class pageLocators {
 	@FindBy(xpath="//button[@data-fieldtype='Attach']")
 	public WebElement LESS_DATA_FIELD_TYPE;
 	
-	@FindBy(xpath="@class='file-upload-area']//button[@class='btn btn-file-upload']/following::input")
+	@FindBy(xpath="//div[@class='file-upload-area']//button[@class='btn btn-file-upload']/following::input")
 	public WebElement LESS_FILE_UPLOAD;
 	
 	@FindBy(xpath="//div/div/div[@class='standard-actions']/button[2]")
@@ -379,4 +405,42 @@ public class pageLocators {
 	@FindBy(xpath="//div[@class='standard-actions flex']/button[@data-label='Save']")
 	public WebElement LESS_STANDARD_ACTIONS_FELX;
 	
+	@FindBy(xpath="//span[@class='avatar avatar-medium']/ancestor::a")
+	public WebElement AVATAR_ICON;
+	
+	@FindBy(xpath="//a[contains(text(),'Logout')]")
+	public WebElement LOGOUT_BUTTON;
+	
+	@FindBy(xpath="//div[@class='row flex align-center page-head-content justify-between']//span[contains(text(),'Approved')]")
+	public WebElement APPROVED_TEXT;
+	
+	@FindBy(xpath="//div[@class='row flex align-center page-head-content justify-between']//span[contains(text(),'Present')]")
+	public WebElement APPROVED_PRESENT_TEXT;
+	
+	@FindBy(xpath="//div[@class='row flex align-center page-head-content justify-between']//span[contains(text(),'Submitted')]")
+	public WebElement APPROVED_SUBMITTED_TEXT;
+	
+	@FindBy(xpath="//button[@data-label='Cancel']")
+	public WebElement LEAVE_CANCEL;
+	
+	@FindBy(xpath="//button[@class='btn btn-primary btn-sm btn-modal-primary']")
+	public WebElement CANCEL_ALL;
+	
+	@FindBy(xpath="//div[@class='btn-open-row']")
+	public WebElement TIMESHEET_EDIT_BUTTON;
+	
+	@FindBy(xpath="//button[@class='btn btn-danger btn-sm pull-right grid-delete-row']")
+	public WebElement TIMESHEET_DELETE_BUTTON;
+	
+	@FindBy(xpath="//div[@class='grid-empty text-center']")
+	public WebElement VERIFY_NO_DATA;
+	
+	@FindBy(xpath="(//span[text()=' Draft'])[1]/preceding::a[@data-doctype='Timesheet']")
+	public WebElement DRAFT_TIMESHEET;
+	
+	@FindBy(xpath="(//span[text()=' Submitted'])[1]/preceding::a[@data-doctype='Timesheet']")
+	public WebElement SUBMITTED_TIMESHEET;
+	
+	@FindBy(xpath="//button[@data-label='Submit']")
+	public WebElement SUBMIT_BUTTON;
 }

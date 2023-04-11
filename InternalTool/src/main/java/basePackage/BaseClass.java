@@ -212,9 +212,10 @@ public class BaseClass {
 		js.executeScript("arguments[0].click();", element);
 	}
 	
-	public String  gettext(WebElement element ) {
+	public String gettext(WebElement element) {
 	String text=element.getText();	
 	return text;
 	}
+	
 	
 }

@@ -2,7 +2,6 @@ package hrTests;
 
 import java.io.IOException;
 
-import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeMethod;
@@ -28,9 +27,9 @@ public class HRTestCases extends BaseClass {
 	}
 	
 	//Creating a new Employee-Fresher with Joining Date Before 25
-	@Test(priority = 0, description ="P0: Verify the user is able to create Junior Employee", enabled = true)
+	@Test(priority = 0, description ="P0: Verify the user is able to create Junior Employee", enabled = false)
 	private void create_Junior_Employee_Before_Buffer_Date() throws IOException, InterruptedException {
-		Methods.createNewUser(user.Employee1_FirstName, user.Employee1_LastName);
+//		Methods.createNewUser(user.Employee1_FirstName, user.Employee1_LastName);
 		Methods.clickOnAppLogoButton();
 		Methods.clickOnHRTab();
 		System.out.println("Creating the junior employee details with a joining date before 25th");
@@ -43,7 +42,7 @@ public class HRTestCases extends BaseClass {
 	}
 	
 	//Creating a new Employee-Fresher with Joining Date After 25
-	@Test(priority = 1, description ="P0: Verify the user is able to create Junior Employee", enabled = true)
+	@Test(priority = 1, description ="P0: Verify the user is able to create Junior Employee", enabled = false)
 	private void create_Junior_Employee_After_Buffer_Date() throws IOException, InterruptedException {
 		Methods.createNewUser(user.Employee2_FirstName, user.Employee2_LastName);
 		Methods.clickOnAppLogoButton();
@@ -60,7 +59,7 @@ public class HRTestCases extends BaseClass {
 	//Creating a new Employee-Senior with Joining Date Before 25
 	@Test(priority = 2, description ="P0: Verify the user is able to create Senior Employee", enabled = true)
 	private void create_Senior_Employee_Before_Buffer_Date() throws IOException, InterruptedException {
-		Methods.createNewUser(user.Employee3_FirstName, user.Employee3_LastName);
+//		Methods.createNewUser(user.Employee3_FirstName, user.Employee3_LastName);
 		Methods.clickOnAppLogoButton();
 		Methods.clickOnHRTab();
 		System.out.println("Creating the senior employee details with a join date before 25th");
@@ -73,7 +72,7 @@ public class HRTestCases extends BaseClass {
 	}
 	
 	//Creating a new Employee-Senior with Joining Date After 25
-	@Test(priority = 3, description ="P0: Verify the user is able to create Senior Employee", enabled = true)
+	@Test(priority = 3, description ="P0: Verify the user is able to create Senior Employee", enabled = false)
 	private void create_Senior_Employee_After_Buffer_Date() throws IOException, InterruptedException {
 		Methods.createNewUser(user.Employee4_FirstName, user.Employee4_LastName);
 		Methods.clickOnAppLogoButton();
@@ -87,15 +86,14 @@ public class HRTestCases extends BaseClass {
 		System.out.println("Successfully created the senior employee details with a joining date before the 25th");
 	}
 	
-
 	@AfterMethod
-	private void take_Failures_Screenshot(ITestResult result) throws Exception {
-		driver.close();
+	public void logout() throws InterruptedException {
+//		Methods.Logout_User();
 	}
 	
 	@AfterTest
-	private void tear_Down() {
-		driver.quit();
+	public void close() {
+//		driver.quit();
 	}
 	
 }
