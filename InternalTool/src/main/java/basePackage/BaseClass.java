@@ -45,6 +45,7 @@ public class BaseClass {
 		driver.get("https://appointry.com/login#login");
 		Reporter.log("User name is entered");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
+		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
 	}
 
 	public static void browserClose() throws IOException {

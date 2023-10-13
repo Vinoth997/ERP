@@ -19,7 +19,7 @@ public class methods extends BaseClass{
 	
 	
 
-	private static final WebElement APPROVED_TEXT = null;
+//	private static final WebElement APPROVED_TEXT = null;
 
 	pageLocators locators;
 	 
@@ -131,7 +131,6 @@ public class methods extends BaseClass{
 				waitForElement(close);
 				javascriptExecutorForceClick(close);
 			}
-//			mouseoveractions(locators.SHORTCUT_KEY);
 			javascriptExecutorForceClick(locators.SHORTCUT_KEY);
 		}
 		
@@ -161,7 +160,6 @@ public class methods extends BaseClass{
 	 // Verifying the total leaves allocated for the employee
 	 // @param data
 	 // @throws InterruptedException
-	  
 	  public void verifyTotalLeaveAllocation(String Total_Allocated_Leaves) throws
 	  InterruptedException {
 			System.out.println("Validating Total Allocated Leaves for an Employee");

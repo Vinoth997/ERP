@@ -3,13 +3,14 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="hrTests.HRTestCases">
+      <class name="hrTests.TestCase">
         <methods>
+          <include name="logout"/>
           <include name="open"/>
-          <include name="create_Employee"/>
-          <include name="driverClose"/>
+          <include name="close"/>
+          <include name="Create_Employee_Before_Buffer_Date"/>
         </methods>
-      </class> <!-- hrTests.HRTestCases -->
+      </class> <!-- hrTests.TestCase -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

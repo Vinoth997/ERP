@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="3" total="4" passed="1" failed="0" skipped="0">
   <reporter-output>
     <line>
       <![CDATA[Chrome is launched]]>
@@ -10,16 +10,13 @@
     <line>
       <![CDATA[User name is entered]]>
     </line>
-    <line>
-      <![CDATA[HR Tab is clicked]]>
-    </line>
   </reporter-output>
-  <suite started-at="2023-03-17T11:38:23 IST" name="Default suite" finished-at="2023-03-17T11:38:29 IST" duration-ms="6109">
+  <suite started-at="2023-04-12T15:05:30 IST" name="Default suite" finished-at="2023-04-12T15:06:09 IST" duration-ms="38668">
     <groups>
     </groups>
-    <test started-at="2023-03-17T11:38:23 IST" name="Default test" finished-at="2023-03-17T11:38:29 IST" duration-ms="6109">
-      <class name="hrTests.HRTestCases">
-        <test-method is-config="true" signature="open()[pri:0, instance:hrTests.HRTestCases@52b1beb6]" started-at="2023-03-17T11:38:23 IST" name="open" finished-at="2023-03-17T11:38:26 IST" duration-ms="3248" status="PASS">
+    <test started-at="2023-04-12T15:05:30 IST" name="Default test" finished-at="2023-04-12T15:06:09 IST" duration-ms="38668">
+      <class name="hrTests.TestCase">
+        <test-method is-config="true" signature="open()[pri:0, instance:hrTests.TestCase@7f0eb4b4]" started-at="2023-04-12T15:05:30 IST" name="open" finished-at="2023-04-12T15:05:32 IST" duration-ms="2332" status="PASS">
           <reporter-output>
             <line>
               <![CDATA[Chrome is launched]]>
@@ -32,18 +29,19 @@
             </line>
           </reporter-output>
         </test-method> <!-- open -->
-        <test-method signature="create_Employee()[pri:0, instance:hrTests.HRTestCases@52b1beb6]" started-at="2023-03-17T11:38:26 IST" name="create_Employee" description="Verify the user is able to create the Employee" finished-at="2023-03-17T11:38:29 IST" duration-ms="2703" status="PASS">
-          <reporter-output>
-            <line>
-              <![CDATA[HR Tab is clicked]]>
-            </line>
-          </reporter-output>
-        </test-method> <!-- create_Employee -->
-        <test-method is-config="true" signature="driverClose()[pri:0, instance:hrTests.HRTestCases@52b1beb6]" started-at="2023-03-17T11:38:29 IST" name="driverClose" finished-at="2023-03-17T11:38:29 IST" duration-ms="121" status="PASS">
+        <test-method signature="Create_Employee_Before_Buffer_Date()[pri:0, instance:hrTests.TestCase@7f0eb4b4]" started-at="2023-04-12T15:05:32 IST" name="Create_Employee_Before_Buffer_Date" description="Verify the user is able to create Junior Employee" finished-at="2023-04-12T15:06:00 IST" duration-ms="27646" status="PASS">
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- driverClose -->
-      </class> <!-- hrTests.HRTestCases -->
+        </test-method> <!-- Create_Employee_Before_Buffer_Date -->
+        <test-method is-config="true" signature="logout()[pri:0, instance:hrTests.TestCase@7f0eb4b4]" started-at="2023-04-12T15:06:00 IST" name="logout" finished-at="2023-04-12T15:06:09 IST" duration-ms="8543" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- logout -->
+        <test-method is-config="true" signature="close()[pri:0, instance:hrTests.TestCase@7f0eb4b4]" started-at="2023-04-12T15:06:09 IST" name="close" finished-at="2023-04-12T15:06:09 IST" duration-ms="123" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- close -->
+      </class> <!-- hrTests.TestCase -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

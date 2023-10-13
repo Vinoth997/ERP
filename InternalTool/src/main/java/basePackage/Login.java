@@ -3,9 +3,6 @@ import java.io.IOException;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.annotations.BeforeTest;
-
-import ERP.methods;
 import ERP.pageLocators;
 
 	public class Login extends BaseClass {

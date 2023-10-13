@@ -38,6 +38,7 @@ public class HRTestCases extends BaseClass {
 		Methods.clickOnAppLogoButton();
 		Methods.clickOnHRTab();
 		Methods.verifyTotalLeaveAllocation(user.Before_Buffer_Date);
+		Methods.clickOnAppLogoButton();
 		System.out.println("Successfully created the junior employee details with a joining date before the 25th");
 	}
 	
