@@ -46,6 +46,7 @@ public class BaseClass {
 		Reporter.log("User name is entered");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
+		//update
 	}
 
 	public static void browserClose() throws IOException {
