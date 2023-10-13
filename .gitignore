@@ -1,2 +1,3 @@
-InternalTool/
-!InternalTool/src/
+InternalTool/.classpath
+InternalTool/.project
+InternalTool/test-output/
