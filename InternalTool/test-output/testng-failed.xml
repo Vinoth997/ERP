@@ -3,14 +3,12 @@
 <suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="hrTests.TestCase">
+      <class name="hrTests.implicitVsExplicit">
         <methods>
-          <include name="logout"/>
+          <include name="browser"/>
           <include name="open"/>
-          <include name="close"/>
-          <include name="Create_Employee_Before_Buffer_Date"/>
         </methods>
-      </class> <!-- hrTests.TestCase -->
+      </class> <!-- hrTests.implicitVsExplicit -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

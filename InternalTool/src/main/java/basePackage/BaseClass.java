@@ -46,7 +46,6 @@ public class BaseClass {
 		Reporter.log("User name is entered");
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(60));
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(60));
-		//update
 	}
 
 	public static void browserClose() throws IOException {
@@ -100,7 +99,7 @@ public class BaseClass {
 	    String TimeStamp = dtf.format(ldt);
 	    File srcFile = scr.getScreenshotAs(OutputType.FILE);
 
-	    if (result.FAILURE == result.getStatus()) {
+	    if (ITestResult.FAILURE == result.getStatus()) {
 	        String directory = System.getProperty("user.dir") + "/FailureScreenShots/";
 	        File dir = new File(directory);
 	        if (!dir.exists()) {
@@ -109,8 +108,8 @@ public class BaseClass {
 	        String destination = directory + TimeStamp + "-" + result.getName() + ".png";
 	        File destFile = new File(destination);
 	        FileUtils.copyFile(srcFile, destFile);
-	    } else if (result.SKIP == result.getStatus()) {
-	    } else if (result.SUCCESS == result.getStatus()) {
+	    } else if (ITestResult.SKIP == result.getStatus()) {
+	    } else if (ITestResult.SUCCESS == result.getStatus()) {
 
 	    }
 
@@ -121,7 +120,7 @@ public class BaseClass {
 			Actions a = new Actions(driver);
 			a.click(target).perform();
 		} catch (Exception e) {
-			System.out.println(e);
+			System.out.println(e);;
 		}
 	}
 
